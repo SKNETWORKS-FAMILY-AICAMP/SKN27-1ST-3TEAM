@@ -165,6 +165,7 @@
 4. 지역별 전기차 분포 지도 (Choropleth Map)
 
 5. 충전소 대비 전기차 비율 그래프 (Bar Chart)
+<img width="792" height="663" alt="image" src="https://github.com/user-attachments/assets/84d953f0-e2f1-4990-acb1-c25023d6985e" />
 
 ---
 
@@ -186,6 +187,7 @@
 
 - 수소차 등록 대수 대비 충전소 비율
 - 충전소 부족 지역 자동 하이라이트
+<img width="782" height="817" alt="image" src="https://github.com/user-attachments/assets/6138ffc9-f077-4031-ac43-3b9a048be78f" />
 
 ---
 
@@ -204,6 +206,7 @@
 
 - 보조금이 높은 지역이 실제 보급률이 높은가?
 - 정책 시행 이후 증가율 변화는?
+<img width="782" height="818" alt="image" src="https://github.com/user-attachments/assets/8f1bc085-a720-4941-99f9-8166e0fbc38a" />
 
 ---
 
@@ -222,6 +225,9 @@
   - 충전시간
 - FAQ 검색 기능
 - 카테고리별 FAQ 필터
+<img width="781" height="831" alt="image" src="https://github.com/user-attachments/assets/a3d278d4-cc10-485d-9056-557fe3b3d287" />
+<img width="786" height="781" alt="image" src="https://github.com/user-attachments/assets/58e9e85d-2fb3-418f-8dcb-8a7455281e1f" />
+
 
 ---
 
@@ -367,3 +373,4 @@
 | 2 | Detail | 차종 상세 정보 |
 | 3 | Search | FAQ 검색 |
 | 4 | Filter | FAQ 카테고리 필터 |
+
