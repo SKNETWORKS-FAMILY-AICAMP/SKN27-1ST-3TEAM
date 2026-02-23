@@ -171,11 +171,12 @@
 
 5. 충전소 대비 전기차 비율 그래프 (Bar Chart)
 
-![alt text](1.png)
+
 
 ## 4.1 메인 대시보드 (SCR-001)
 
 ### 🔎 이미지 기반 추가 기능 정의
+<img width="792" height="663" alt="image" src="https://github.com/user-attachments/assets/a21470d8-da68-4b02-a257-3e1ca97e48f1" />
 
 #### ① 상단 네비게이션 바
 - 시스템 로고 및 서비스명 표시
@@ -213,7 +214,6 @@
 - 카드 Hover 시 그림자 강조 효과
 - 화면 크기에 따라 3열 → 2열 → 1열 자동 정렬
 
-
 ---
 
 ## 4.2 지역 인프라 분석 화면 (SCR-002)
@@ -237,10 +237,8 @@
 
 ## 4.2 지역 인프라 분석 화면 (SCR-002)
 
-![alt text](2.png)
-
 ### 🔎 이미지 기반 추가 기능 정의
-
+<img width="782" height="817" alt="image" src="https://github.com/user-attachments/assets/f7e23cea-65fd-4e24-b5f8-19081c2908b3" />
 #### ① 지역 선택 드롭다운
 - 시/도 단위 선택
 - 선택 즉시 모든 지표 재계산
@@ -275,6 +273,7 @@
 
 ### 📌 화면 목적
 보조금 정책의 실효성 검증
+<img width="782" height="818" alt="image" src="https://github.com/user-attachments/assets/3e9773bb-4991-40ac-a51c-306fe29184df" />
 
 ### 📊 구성
 
@@ -319,6 +318,7 @@
 ---
 
 ## 4.4 현대차 전기차 & FAQ (SCR-004)
+<img width="786" height="783" alt="image" src="https://github.com/user-attachments/assets/e5ad78f0-5c3b-462e-b3b0-e9b4c844654b" />
 
 ### 📌 화면 목적
 현대차 전기차 정보 제공 및 기업 FAQ 조회
@@ -539,3 +539,4 @@
 | 2 | Detail | 차종 상세 정보 |
 | 3 | Search | FAQ 검색 |
 | 4 | Filter | FAQ 카테고리 필터 |
+
