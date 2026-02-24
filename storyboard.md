@@ -537,11 +537,15 @@
 | 3 | Search | FAQ 검색 |
 | 4 | Filter | FAQ 카테고리 필터 |
 
+
+### 화면설계서
+
 <img width="2800" height="1080" alt="001" src="https://github.com/user-attachments/assets/b6ec8eb9-21fc-4a4b-9f16-7a5a9d9eb9bf" />
 <img width="2800" height="1080" alt="002" src="https://github.com/user-attachments/assets/a6dff5f2-0fa9-4a12-80b5-7e439de433f8" />
 <img width="2800" height="1080" alt="003" src="https://github.com/user-attachments/assets/ab5b5cd7-300d-47eb-a037-93100ec7e163" />
 <img width="2800" height="1080" alt="004" src="https://github.com/user-attachments/assets/4b974056-e784-4b22-b5d0-20245e14d1ac" />
 <img width="2800" height="1080" alt="005" src="https://github.com/user-attachments/assets/ec44266c-acb5-42e8-9b2e-eb642318cf51" />
+
 
 
 
