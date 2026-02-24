@@ -1,3 +1,0 @@
-import streamlit as st
-
-st.title("타이틀입니다")

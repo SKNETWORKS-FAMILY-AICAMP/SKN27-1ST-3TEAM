@@ -10,3 +10,7 @@ def query(sql):
         df = pd.read_sql(sql, conn)
     return df
 
+print(query("select * from region"))
+
+
+
