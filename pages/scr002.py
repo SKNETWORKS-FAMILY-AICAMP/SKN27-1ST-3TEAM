@@ -37,6 +37,7 @@ FROM ev_registration e
 JOIN region r ON e.region_id = r.region_id
 """
 
+
 df = query(query_sql)
 
 #df = df.sort_values(by="ev_count", ascending= False).reset_index(drop= True)#왜 내림차순 정렬이 안되는지 모르겠음
