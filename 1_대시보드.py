@@ -1,77 +1,32 @@
 import streamlit as st
-import plotly.graph_objects as go
 import pandas as pd
-from db import get_connection
-
-conn = get_connection()
+import plotly.graph_objects as go
+import db
 
 # 차량 데이터
 def car_data():
-    if conn is None:
-        return None, None, None
+    df_ev = db.fetch_data(db.queries["ev_main"])       # 전기차 등록대수 (최신연도)
+    df_h2 = db.fetch_data(db.queries["h2_main"])       # 수소차 등록대수 (최신연도)
+    df_total = db.fetch_data(db.queries["total_main"]) # 전체 차량 등록대수 (최신연도)
     
-    try:
-        with conn.cursor() as cursor:
-            # 최신연도 전국 전기차 등록대수
-            query_ev = """
-                        SELECT ev_count FROM ev_registration 
-                        WHERE reg_year = (SELECT MAX(reg_year) FROM ev_registration)
-                        """ 
-            # 최신연도 전국 수소차 등록대수
-            query_h2 = """
-                        SELECT h2_count 
-                        FROM hydrogen_regional 
-                        WHERE base_ym = (SELECT MAX(base_ym) FROM hydrogen_regional)
-                        """ 
-            # 최신연도 전체 차량 등록대수
-            query_total = """
-                        SELECT total_vehicle 
-                        FROM total_vehicle_yearly 
-                        WHERE reg_year = (SELECT MAX(reg_year) FROM total_vehicle_yearly)
-                        """ 
-            df_ev = pd.read_sql(query_ev, conn)
-            df_h2 = pd.read_sql(query_h2, conn)
-            df_total = pd.read_sql(query_total, conn)
-            return df_ev, df_h2, df_total
-    except Exception as e:
-        st.error(f"차량 데이터 쿼리오류: {e}")
-        return None, None, None
-
-# 그래프 데이터
-def graph_data():
-    if conn is None:
+    if any(df is None for df in [df_ev, df_h2, df_total]):
         return None, None, None
         
-    try:
-        with conn.cursor() as cursor:
-            # 연도별 총 CO2 배출량
-            query_co2 = """
-                        SELECT reg_year AS 연도, SUM(emission) AS 총_CO2_배출량 
-                        FROM transport_co2 
-                        GROUP BY reg_year 
-                        ORDER BY reg_year DESC;
-                        """ 
-            # 연도별 평균기온
-            query_temp = """
-                        SELECT reg_year AS 연도, avg_temp AS 평균기온 
-                        FROM temperature_yearly 
-                        ORDER BY reg_year DESC;
-                        """ 
-            # 연도별 전체 차량 등록대수 (차량 수요)
-            query_demand = """
-                        SELECT reg_year AS 연도, total_vehicle AS 전체_등록_대수 
-                        FROM total_vehicle_yearly 
-                        ORDER BY reg_year DESC;
-                        """ 
-            
-            df_co2 = pd.read_sql(query_co2, conn)
-            df_temp = pd.read_sql(query_temp, conn)
-            df_demand = pd.read_sql(query_demand, conn)
-            return df_co2, df_temp, df_demand
-    except Exception as e:
-        st.error(f"그래프 데이터 쿼리오류: {e}")
-        return None, None, None
+    return df_ev, df_h2, df_total
 
+#그래프 데이터
+def graph_data():
+    df_co2 = db.fetch_data(db.queries["co2"])       #연도별 총 CO2 배출량
+    df_temp = db.fetch_data(db.queries["temp"])     #연도별 평균기온
+    df_demand = db.fetch_data(db.queries["demand"]) #연도별 전체 차량 등록대수
+    
+    # 데이터 검증
+    if any(df is None for df in [df_co2, df_temp, df_demand]):
+        return None, None, None
+        
+    return df_co2, df_temp, df_demand
+
+# 실행
 df_ev, df_h2, df_total = car_data()
 df_co2, df_temp, df_demand = graph_data()
 

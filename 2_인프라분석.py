@@ -1,41 +1,21 @@
 import streamlit as st
-import plotly.graph_objects as go
 import pandas as pd
-from db import get_connection
-
-conn = get_connection()
+import plotly.graph_objects as go
+import db
 
 # 차량 데이터
 def get_data():
-    if conn is None: 
+    df_ev = db.fetch_data(db.queries["ev_latest"])           #
+    df_h2 = db.fetch_data(db.queries["h2_latest"])
+    df_total = db.fetch_data(db.queries["charger_latest"])
+    
+    # 데이터 검증
+    if any(df is None for df in [df_ev, df_h2, df_total]):
         return None, None, None
-    try:
-        with conn.cursor() as cursor:
-            # 전기차 등록대수 (최신 연도)
-            query_ev = """
-                SELECT ev_count FROM ev_registration 
-                WHERE reg_year = (SELECT MAX(reg_year) FROM ev_registration)
-            """
-            # 수소차 등록대수 (최신 연도)
-            query_h2 = """
-                SELECT h2_count FROM hydrogen_regional 
-                WHERE base_ym = (SELECT MAX(base_ym) FROM hydrogen_regional)
-            """
-            # 총 충전기 수 (최신 연도)
-            query_total = """
-                SELECT total_cnt FROM charger_yearly 
-                WHERE reg_year = (SELECT MAX(reg_year) FROM charger_yearly)
-            """
-            
-            df_evcount = pd.read_sql(query_ev, conn)
-            df_h2count = pd.read_sql(query_h2, conn)
-            df_totalcount = pd.read_sql(query_total, conn)
-            
-            return df_evcount, df_h2count, df_totalcount
-    except Exception as e:
-        st.error(f"데이터 로드 중 오류: {e}")
-        return None, None, None
+        
+    return df_ev, df_h2, df_total
 
+# 데이터 가져오기 실행
 df_evcount, df_h2count, df_totalcount = get_data()
 
 # 그래프 데이터 함수
