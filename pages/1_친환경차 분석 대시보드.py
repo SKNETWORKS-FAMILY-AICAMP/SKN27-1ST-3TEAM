@@ -18,7 +18,7 @@ st.markdown("""
     /* 메인 배너 스타일 */
     .main-banner { background-color: #2b57d1; padding: 35px 45px; border-radius: 15px; color: white; margin-bottom: 25px; }
     .banner-title { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
-    .banner-subtitle { font-size: 24px; opacity: 0.9; }
+    .banner-subtitle { font-size: 22px; opacity: 0.9; }
 
     /* 대시보드 메트릭 카드 스타일 */
     .metric-container {
@@ -27,7 +27,6 @@ st.markdown("""
         color: white; align-items: center;
     }
 
-    
     .metric-label { font-size: 28px; color: #a0a0a0; margin-bottom: 10px; }
     .metric-value { font-size: 40px; font-weight: 700; color: #000000; }
     .metric-unit { font-size: 30px; font-weight: 400; color: #888; }
@@ -35,16 +34,16 @@ st.markdown("""
 
     /* FAQ 섹션 스타일 */
     .stExpander {
-        background-color: #1a1c24 !important;
-        border: 1px solid #2d2e3a !important;
-        border-radius: 8px !important;
-        margin-bottom: 10px !important;
+        background-color: #1a1c24;
+        border: 1px solid #2d2e3a;
+        border-radius: 8px;
+        margin-bottom: 10px;
     }
     
     /* 버튼 스타일 조정 */
     div.stButton > button {
         background-color: #1a1c24; color: white; border: 1px solid #3e404b;
-        width: 100%; border-radius: 5px;
+        width: 100%; border-radius: 10px;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -70,7 +69,7 @@ with col1:
                     <div class="metric-label">전국 전기차 등록</div>
                     <div class="metric-value">224.4 <span class="metric-unit">만 대</span></div>
                 </div>
-                <div style="font-size:30px;">🚗</div>
+                <div style="font-size:30px;">🪫</div>
             </div>
         """, unsafe_allow_html=True)
 
@@ -92,7 +91,7 @@ with col3:
                     <div class="metric-label">친환경차 비율</div>
                     <div class="metric-value">17.0 <span class="metric-unit">%</span></div>
                 </div>
-                <div style="font-size:30px;">🚀</div>
+                <div style="font-size:30px;">🚙</div>
             </div>
         """, unsafe_allow_html=True)
 

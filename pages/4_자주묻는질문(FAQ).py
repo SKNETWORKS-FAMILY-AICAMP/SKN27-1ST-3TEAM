@@ -17,8 +17,8 @@ st.markdown("""
     
     /* 메인 배너 스타일 */
     .main-banner { background-color: #2b57d1; padding: 35px 45px; border-radius: 15px; color: white; margin-bottom: 25px; }
-    .banner-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    .banner-subtitle { font-size: 18px; opacity: 0.9; }
+    .banner-title { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+    .banner-subtitle { font-size: 22px; opacity: 0.9; }
 
     /* 대시보드 메트릭 카드 스타일 */
     .metric-container {
@@ -38,12 +38,43 @@ st.markdown("""
         border-radius: 8px !important;
         margin-bottom: 10px !important;
     }
-    
-    /* 버튼 스타일 조정 */
-    div.stButton > button {
-        background-color: #ffffff; color: #000000; border: 1px solid #3e404b;
-        width: 100%; border-radius: 5px;
+
+    # FAQ 질문 & 답변 폰트 조절
+    .stExpander summary p {
+        font-size: 50px !important; 
+        font-weight: 600 !important;
+        color: #333333 !important; 
     }
+
+    .stExpander div[data-testid="stExpanderDetails"] p {
+        font-size: 18px !important;  /* 답변 크기: 18px */
+        color: #333333 !important;   /* 진한 회색 */
+        line-height: 1.6 !important; /* 줄간격 확보 */
+    }
+
+    /* 버튼 스타일 조정 */
+    div.stButton > button p {
+        font-size: 20px !important;
+        font-weight: 600 !important;
+    }
+
+    div.stButton > button {
+        background-color: #ffffff; 
+        color: #000000; 
+        border: 1px solid #3e404b;
+        width: 100%; 
+        border-radius: 5px;
+        padding: 10px 0px;        
+        height: auto;             
+        transition: all 0.2s;
+    }
+
+    div.stButton > button:hover {
+        background-color: #f1f3f5;
+        border-color: #002c5f;
+        color: #002c5f;
+    }
+
     </style>
     """, unsafe_allow_html=True)
 
@@ -51,10 +82,18 @@ st.markdown("""
 # 페이지 2: 자주 묻는 질문 (FAQ) 화면 구현
 # ---------------------------------------------------------
 
-st.markdown('<div class="main-banner" style="background-color: #3f3da1;"><div class="banner-title">자주 묻는 질문 (FAQ)</div><div>현대차 전기차 관련 궁금증을 해결해드립니다</div></div>', unsafe_allow_html=True)
+# st.markdown('<div class="main-banner" style="background-color: #3f3da1;"><div class="banner-title">자주 묻는 질문 (FAQ)</div><div>현대차 전기차 관련 궁금증을 해결해드립니다</div></div>', unsafe_allow_html=True)
+# 상단 배너 (글자 크기 클래스 적용)
+st.markdown("""
+        <div class="main-banner">
+            <div class="banner-title">자주 묻는 질문 (FAQ)</div>
+            <div class="banner-subtitle">현대차 전기차 관련 궁금증을 해결해드립니다</div>
+        </div>
+        """, unsafe_allow_html=True)
+
 
 # 검색바
-st.text_input("검색어", placeholder="검색어를 입력하세요...", label_visibility="collapsed")
+st.text_input("검색어", placeholder="🔍검색어를 입력하세요...", label_visibility="collapsed")
     
 # 카테고리 버튼
 btn_cols = st.columns(6)
@@ -75,6 +114,6 @@ faq_items = [
 ]
 
 for item in faq_items:
-    with st.expander(f"**{item['cat']}** | {item['q']}"):
-        st.write(f"상세 답변 내용이 여기에 표시됩니다. {item['q']}에 대한 현시점 기준 가장 정확한 정보를 안내드립니다.")
-        st.button(f"자세히 보기", key=item['q'])
+    with st.expander(f"[{item['cat']}] {item['q']}"):
+        # 답변 내용 출력
+        st.markdown(f"상세 답변 내용이 여기에 표시됩니다. {item['q']}\n 에 대한 현시점 기준 가장 정확한 정보를 안내드립니다.")
