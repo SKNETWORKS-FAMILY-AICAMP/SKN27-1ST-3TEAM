@@ -1,4 +1,6 @@
 import streamlit as st
+from common.crawl import crawl_faq
+from common.db import DB
 
 st.set_page_config(page_title="전기차 대시보드", layout="wide")
 
@@ -18,3 +20,4 @@ st.markdown("""
 ---
 왼쪽 사이드바에서 챕터를 선택하세요.
 """)
+st.code(code, language=None)
