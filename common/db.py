@@ -28,6 +28,7 @@ def fetch_data(query):
         return None
 
 # 딕셔너리에 쿼리 모음
+# 조회 쿼리
 queries = {   
     ### 대시보드 페이지 쿼리 ###
     #최신연도 전국 전기차 등록대수
@@ -86,6 +87,12 @@ queries = {
         ORDER BY r.region_id
     """,
     # 충전기 데이터 (매핑)
-    "charger_raw": "SELECT * FROM charger_yearly WHERE reg_year = 2024 LIMIT 1"
-    
+    "charger_raw": "SELECT * FROM charger_yearly WHERE reg_year = 2024 LIMIT 1",
+
+
+
+    ### 보조금 정책 페이지 쿼리 ###
+    "subsidy_all": "SELECT * FROM subsidy", # 보조금
+    # 최신 연도 기준 전기차 대수
+    "ev_reg_all": "SELECT * FROM ev_registration WHERE reg_year = 2024"     
 }
