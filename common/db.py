@@ -7,8 +7,8 @@ def get_connection():
     try:
         return pymysql.connect(
             host="localhost", 
-            user="root", 
-            password="root1234",
+            user="car_insert", 
+            password="car1234",
             port=3306,              #로컬 테스트용 임시포트 (나중에 변경)
             charset="utf8mb4", 
             database="car_insert" 
@@ -73,6 +73,31 @@ queries = {
     "charger_latest": """
         SELECT total_cnt FROM charger_yearly 
         WHERE reg_year = (SELECT MAX(reg_year) FROM charger_yearly)
+    """,
+    # 전기차 등록대수(년도)
+    "ev_count":"""
+        SELECT reg_year, sum(ev_count) as sum_count FROM ev_registration group by reg_year
+    """,
+    # 전체 차량(년도)
+    "total_v_y":"""
+        SELECT reg_year, total_vehicle FROM total_vehicle_yearly
+    """,
+
+    # 연도별 총 CO2 배출량 (VKT 기준)
+    "co2_vkt": """
+        SELECT reg_year AS 연도, SUM(emission) AS 총_CO2_VKT
+        FROM transport_co2
+        WHERE criteria = 'VKT'
+        GROUP BY reg_year
+        ORDER BY reg_year ASC
+    """,
+    # 연도별 총 CO2 배출량 (연료 기준)
+    "co2_fuel": """
+        SELECT reg_year AS 연도, SUM(emission) AS 총_CO2_연료
+        FROM transport_co2
+        WHERE criteria = '연료'
+        GROUP BY reg_year
+        ORDER BY reg_year ASC
     """,
 
 
