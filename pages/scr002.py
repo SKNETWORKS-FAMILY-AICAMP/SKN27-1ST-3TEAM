@@ -22,19 +22,20 @@ selected_charger_value = df[df["region"] == selected_region]["charger_yearly"]
 # metric 출력
 col1, col2, col3 ,col4 = st.columns(4)
 
-col1.metric("전기차 등록 대수", selected_ev_value)
-col2.metric("수소차 등록 대수", selected_h2_value)
-col3.metric("총 충전기 수", selected_charger_value)
-col4.metric("전기차 1대당 충전기 수", selected_ev_value/selected_charger_value)
+col1.metric("전기차 등록 대수", selected_ev_value,border=True)
+col2.metric("수소차 등록 대수", selected_h2_value,border=True)
+col3.metric("총 충전기 수", selected_charger_value,border=True)
+col4.metric("전기차 1대당 충전기 수", selected_ev_value/selected_charger_value,border=True)
 
 
 
 #지역별 전기차 그래프
-st.header("지역별 전기차 등록 현황")
+st.header("지역별 전기차 등록 현황 (2024년 기준)")
 query_sql = """
-SELECT r.region_name, e.ev_count
+SELECT r.region_name, e.ev_count, e.reg_year
 FROM ev_registration e
 JOIN region r ON e.region_id = r.region_id
+WHERE e.reg_year = 2024
 """
 
 
@@ -44,7 +45,7 @@ df = query(query_sql)
 st.bar_chart(df, x="region_name", y="ev_count")
 
 #지역별 충전기 현황
-st.header("지역별 충전기 현황")
+st.header("지역별 충전기 현황(2025년 기준)")
 
 df2 = query(
     """
