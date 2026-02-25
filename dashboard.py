@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-import db
+import common.db as db
 
 # 차량 데이터
 def car_data():

@@ -1,6 +1,6 @@
 import streamlit as st
 import plotly.graph_objects as go
-import db
+import common.db as db
 
 # 차량 데이터
 def get_data():
