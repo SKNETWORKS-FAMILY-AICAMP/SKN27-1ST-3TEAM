@@ -6,12 +6,6 @@ from plotly.subplots import make_subplots
 
 st.set_page_config(layout="wide", page_title="현대차 전기차 분석")
 
-# 사이드바 페이지 전환 메뉴
-with st.sidebar:
-    st.title("Menu")
-    page = st.radio("이동할 페이지 선택", ["친환경차 분석 대시보드", "자주 묻는 질문 (FAQ)"])
-    st.write("---")
-
 # 데이터베이스 연결 엔진
 engine = create_engine("mysql+mysqlconnector://car_insert:car1234@127.0.0.1:3306/car_insert")
 
@@ -19,22 +13,24 @@ engine = create_engine("mysql+mysqlconnector://car_insert:car1234@127.0.0.1:3306
 st.markdown("""
     <style>
     /* 전체 배경 및 텍스트 색상 */
-    .main { background-color: #0e1117; }
+    .main { background-color: #1a1c2405; }
     
     /* 메인 배너 스타일 */
     .main-banner { background-color: #2b57d1; padding: 35px 45px; border-radius: 15px; color: white; margin-bottom: 25px; }
-    .banner-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    .banner-subtitle { font-size: 18px; opacity: 0.9; }
+    .banner-title { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+    .banner-subtitle { font-size: 24px; opacity: 0.9; }
 
     /* 대시보드 메트릭 카드 스타일 */
     .metric-container {
-        display: flex; justify-content: space-between; background-color: #1a1c24; padding: 20px; 
+        display: flex; justify-content: space-between; background-color: #1a1c2400; padding: 20px; 
         border-radius: 15px; border: 1px solid #2d2e3a; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         color: white; align-items: center;
     }
-    .metric-label { font-size: 14px; color: #a0a0a0; margin-bottom: 10px; }
-    .metric-value { font-size: 24px; font-weight: 700; color: #ffffff; }
-    .metric-unit { font-size: 16px; font-weight: 400; color: #888; }
+
+    
+    .metric-label { font-size: 28px; color: #a0a0a0; margin-bottom: 10px; }
+    .metric-value { font-size: 40px; font-weight: 700; color: #000000; }
+    .metric-unit { font-size: 30px; font-weight: 400; color: #888; }
     .icon-style { font-size: 30px; margin-top: 10px; }
 
     /* FAQ 섹션 스타일 */
@@ -113,7 +109,7 @@ with col4:
         """, unsafe_allow_html=True)
 
 with st.container():
-    st.markdown('<div style="background-color:white; padding:30px; border-radius:20px; border:1px solid #edf2f7;">', unsafe_allow_html=True)
+    st.markdown('<div style="background-color:white; padding:30px; border-radius:20px; solid #edf2f7;">', unsafe_allow_html=True)
     st.subheader("환경 지표 통합 분석")
     st.caption("평균기온, 친환경차 증가, CO2 배출량 추이")
 
