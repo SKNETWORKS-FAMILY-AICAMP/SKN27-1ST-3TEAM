@@ -31,7 +31,8 @@ df_ev, df_h2, df_total = car_data()
 df_co2, df_temp, df_demand = graph_data()
 
 
-# 화면 부분
+
+### 화면 부분 ####
 container = st.container(border = True, height = 140)
 container.header("🚗친환경차 분석 대시보드")
 container.text("전국 자동차 등록 현황 및 데이터 종합 분석")

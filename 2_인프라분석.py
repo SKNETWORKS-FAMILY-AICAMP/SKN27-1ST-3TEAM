@@ -1,13 +1,12 @@
 import streamlit as st
-import pandas as pd
 import plotly.graph_objects as go
 import db
 
 # 차량 데이터
 def get_data():
-    df_ev = db.fetch_data(db.queries["ev_latest"])           #
-    df_h2 = db.fetch_data(db.queries["h2_latest"])
-    df_total = db.fetch_data(db.queries["charger_latest"])
+    df_ev = db.fetch_data(db.queries["ev_latest"])           #전기차 최신연도
+    df_h2 = db.fetch_data(db.queries["h2_latest"])           #수소차 최신연도
+    df_total = db.fetch_data(db.queries["charger_latest"])   #충전기 최신연도
     
     # 데이터 검증
     if any(df is None for df in [df_ev, df_h2, df_total]):
@@ -18,52 +17,48 @@ def get_data():
 # 데이터 가져오기 실행
 df_evcount, df_h2count, df_totalcount = get_data()
 
+
 # 그래프 데이터 함수
 def graph_data():
-    if conn is None: return None
-    try:
-        with conn.cursor() as cursor:
-            # 시도별 전기차 데이터
-            query_ev = """  
-                SELECT r.region_id, r.region_name as '지역', e.ev_count as '전기차' 
-                FROM region r
-                JOIN ev_registration e ON r.region_id = e.region_id
-                WHERE e.reg_year = 2024
-                ORDER BY r.region_id
-            """
-            df_ev = pd.read_sql(query_ev, conn)
+    # 데이터 추출
+    df_ev = db.fetch_data(db.queries["ev_regional"])          #시도별 전기차
+    df_charger_raw = db.fetch_data(db.queries["charger_raw"]) #충전기
 
-            # 충전기 데이터
-            query_charger = "SELECT * FROM charger_yearly WHERE reg_year = 2024 LIMIT 1"
-            df_charger_raw = pd.read_sql(query_charger, conn)
-            
-            if df_charger_raw.empty: return None
-            row = df_charger_raw.iloc[0]
-
-            # 시도별 딕셔너리에 담아서 매핑
-            mapping_data = {
-                '서울': row['seoul_cnt'], '경기': row['gyeonggi_cnt'], '인천': row['incheon_cnt'],
-                '강원': row['gangwon_cnt'], '제주': row['jeju_cnt'],
-                '대전': row['chungcheong_cnt'], '세종': row['chungcheong_cnt'], 
-                '충북': row['chungcheong_cnt'], '충남': row['chungcheong_cnt'],
-                '광주': row['jeolla_cnt'], '전북': row['jeolla_cnt'], '전남': row['jeolla_cnt'],
-                '부산': row['gyeongsang_cnt'], '대구': row['gyeongsang_cnt'], 
-                '울산': row['gyeongsang_cnt'], '경북': row['gyeongsang_cnt'], '경남': row['gyeongsang_cnt']
-            }
-            
-            df_ev['충전기'] = df_ev['지역'].map(mapping_data).fillna(0) # 데이터 없는 지역은 0으로 수치 표시
-            df_ev['전기차당 충전기'] = (df_ev['충전기'] / df_ev['전기차']).round(2)
-            
-            return df_ev.head(10) # 10개 지역만 추출
-
-    except Exception as e:
-        st.error(f"그래프 데이터 로드 중 오류: {e}")
+    # 데이터 검증
+    if df_ev is None or df_charger_raw is None or df_charger_raw.empty:
         return None
 
+    try:
+        row = df_charger_raw.iloc[0]
+        
+        # 시도별 매핑
+        mapping_data = {
+            '서울': row['seoul_cnt'], '경기': row['gyeonggi_cnt'], '인천': row['incheon_cnt'],
+            '강원': row['gangwon_cnt'], '제주': row['jeju_cnt'],
+            '대전': row['chungcheong_cnt'], '세종': row['chungcheong_cnt'], 
+            '충북': row['chungcheong_cnt'], '충남': row['chungcheong_cnt'],
+            '광주': row['jeolla_cnt'], '전북': row['jeolla_cnt'], '전남': row['jeolla_cnt'],
+            '부산': row['gyeongsang_cnt'], '대구': row['gyeongsang_cnt'], 
+            '울산': row['gyeongsang_cnt'], '경북': row['gyeongsang_cnt'], '경남': row['gyeongsang_cnt']
+        }
+        
+        # 컬럼
+        df_ev['충전기'] = df_ev['지역'].map(mapping_data).fillna(0)
+        # 0으로 나누기 방지 처리
+        df_ev['전기차당 충전기'] = (df_ev['충전기'] / df_ev['전기차']).replace([float('inf'), -float('inf')], 0).round(2)
+        
+        return df_ev.head(10) # 10개 지역만 추출
+
+    except Exception as e:
+        st.error(f"그래프 가공 중 오류: {e}")
+        return None
+
+# 그래프 데이터
 df = graph_data()
 
 
-## 화면 부분
+
+### 화면 부분 ####
 container = st.container(border=True, height=140)
 container.header("📊 인프라 격차 분석")
 container.text("지역별 충전 인프라 및 친환경차 현황 비교")
