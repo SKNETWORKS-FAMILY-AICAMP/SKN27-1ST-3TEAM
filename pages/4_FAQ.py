@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from common.db import DB
+from common.db2 import DB
 
 class FAQ:
     def __init__(self):

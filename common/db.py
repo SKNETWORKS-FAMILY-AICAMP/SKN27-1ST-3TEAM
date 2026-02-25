@@ -9,7 +9,7 @@ def get_connection():
             host="localhost", 
             user="root", 
             password="root1234",
-            port=3307,              #로컬 테스트용 임시포트 (나중에 변경)
+            port=3306,              #로컬 테스트용 임시포트 (나중에 변경)
             charset="utf8mb4", 
             database="car_insert" 
         )
