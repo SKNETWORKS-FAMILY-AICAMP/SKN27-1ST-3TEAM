@@ -41,8 +41,7 @@ paginate: true
 ## 사용자 대상
 
 - 전기차 구매를 고려하는 일반 소비자→ 지역 인프라·보조금 비교 제공
-- 정책 및 시장 흐름에 관심 있는 사용자→ 전기차 보급과 탄소배출, 정책 효과 분석 가능
-  ## 분석기업
+- 정책 및 시장 흐름에 관심 있는 사용자→ 전기차 보급과 탄소배출, 정책 효과 분석 가능## 분석기업
 - 현대
 
 ---
@@ -51,33 +50,35 @@ paginate: true
 
 <img width="2800" height="500" alt="005" src="https://postfiles.pstatic.net/MjAyNjAyMjZfMjgz/MDAxNzcyMDgwMzkyMTk1.NMEMIofpgO0WqU11OU0sxgRWUpKJeNwJ3aS-4l6JKQcg.UTPaQ89fqKkvQN8fc2e0_zRVM739MqWzxAYf17cRl6Eg.PNG/erd.png?type=w966">
 
+---
 
-
-hydrogen_regional # 2025년 12월 기준 시도별 수소차 등록대수
+hydrogen_regional 테이블# 2025년 12월 기준 시도별 수소차 등록대수
 https://h2hub.or.kr/main/yard/domestic-hydrogen-vehicle-registration-status-yearly.do
 수소경제 종합 정보 포털
 
-ev_registration # 시도별 연도별 전기차 등록대수, 핵심 중심 테이블
+ev_registration 테이블# 시도별 연도별 전기차 등록대수, 핵심 중심 테이블
 https://chargeinfo.ksga.org/front/statistics/evCar/
 차지인포
 
-charger_yearly # 연도별 권역별 전기차 충전소 수
+charger_yearly 테이블# 연도별 권역별 전기차 충전소 수
 https://chargeinfo.ksga.org/front/statistics/charger
 차지인포
 
-temperature_yearly # 연도별 전국 평균기온
+temperature_yearly 테이블# 연도별 전국 평균기온
 https://data.kma.go.kr/climate/RankState/selectRankStatisticsDivisionList.do
 기상청 기상자료개방포털
 
-total_vehicle_yearly # 연도별 전체 자동차 등록 대수
+---
+
+total_vehicle_yearly 테이블 # 연도별 전체 자동차 등록 대수
 https://stat.molit.go.kr/portal/cate/statView.do?hRsId=58&hFormId=1244&hSelectId=5559&hPoint=00&hAppr=1&hDivEng=&oFileName=&rFileName=&midpath=&sFormId=1244&sStyleNum=1&settingRadio=xlsx
 국토교통 통계누리
 
-subsidy #2026 지자체별 전기차 + 수소차 보조금
+subsidy 테이블 #2026 지자체별 전기차 + 수소차 보조금
 https://ev.or.kr/nportal/buySupprt/initPsLocalCarPirceAction.do
 무공해차 통합누리집
 
-transport_co2 # 시도별 연도별 수송 CO2 배출량
+transport_co2 테이블 # 시도별 연도별 수송 CO2 배출량
 https://www.gir.go.kr/home/index.do?menuId=36
 기후에너지환경부 온실가스 종합정보센터
 
