@@ -15,7 +15,8 @@ paginate: true
 
 | 팀원1  | 팀원2  | 팀원3  | 팀원4  | 팀원5  | 팀원6  |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-|        |        |        |        |        |        |
+|        |        |        |        |        |  <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/54a2b2df-bd7f-4250-a5b9-3da2b9dafb06" />
+      |
 | 김한솔 | 김주영 | 김재묵 | 김필주 | 박준희 | 이혜림 |
 
 ## 2. 프로젝트 개요
