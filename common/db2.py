@@ -10,8 +10,8 @@ class DB:
         #DB 연결
         self.conn = pymysql.connect(
             host = "localhost",
-            user = "root",
-            password = "root1234",
+            user = "car_insert",
+            password = "car1234",
             charset = "utf8mb4",
             database = "car_insert"
         )
