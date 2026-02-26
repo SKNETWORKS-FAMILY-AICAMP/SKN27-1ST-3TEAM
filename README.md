@@ -94,32 +94,28 @@ paginate: true
 
 
 # 3-1 프로젝트 구조
+
+```text
 .
+├── common/                          # 공용 파일
+│   ├── crawl.py                     # 크롤링 및 DB 저장 모듈
+│   ├── csv_to_db.py                 # CSV 파일 DB 저장 모듈
+│   ├── db.py                        # 서비스 메인 DB 모듈
+│   ├── db2.py                       # FAQ 전용 DB 모듈
+│   └── FAQ_table_202602260908.csv   # 크롤링 데이터(CSV)
 │
-├── common/                                    # 공용 파일
-│   ├── crawl.py                                # 크롤링한 데이터를 DB에 저장하는 모듈
-│   ├── csv_to_db.py 	    		   # 크롤링한 csv 파일을 DB에 저장하는 모듈
-│   ├── db.py                                   # pages에 사용하는 DB 모듈
-│   ├── db2.py		    	           # FAQ 페이지에 관한 모듈
-│   └── FAQ_table_202602260908.csv   # 크롤링한 csv 파일
+├── pages/                           # Streamlit 페이지 모듈
+│   ├── dashboard.py                 # 친환경차 대시보드
+│   ├── infra_subsidy.py             # 인프라 및 보조금 분석
+│   └── 4_FAQ.py                     # FAQ 페이지
 │
-│
-├── pages/                          		   # 구현한 페이지
-│   ├── dashboard.py                         # 친환경차 대시보드
-│   ├── infra_subsidy.py                      # 인프라 분석, 보조금 정책
-│   ├── 4_FAQ.py                               # FAQ 페이지
-│
-│
-├── .env                                             # 환경변수(DB 정보, API 키 등)
-├── .gitignore                  		    # Git 제외 파일 설정 
-├── data.py                                        # 데이터 로딩/공통 유틸 모듈
-├── main.py                     		    # Streamlit 메인 실행 스크립트(entry point)
-├── README.md                                 # 프로젝트 개요 및 사용 방법
-├── requirements.txt                            # Python 패키지 의존성 목록
-└── storyboard.md                              # 프로젝트 문서
-
-
----
+├── .env                             # 환경변수 (DB 정보, API 키 등)
+├── .gitignore                       # Git 제외 파일 설정
+├── data.py                          # 데이터 로딩 및 유틸 모듈
+├── main.py                          # Streamlit 메인 실행 파일
+├── README.md                        # 프로젝트 개요
+├── requirements.txt                 # 패키지 의존성 목록
+└── storyboard.md                    # 기획 및 스토리보드 문서
 
 
 
