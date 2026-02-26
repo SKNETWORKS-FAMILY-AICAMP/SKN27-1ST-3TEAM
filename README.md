@@ -13,10 +13,9 @@ paginate: true
 
 ### 1-1. 팀원 소개
 
-| 팀원1  | 팀원2  | 팀원3  | 팀원4  | 팀원5  | 팀원6  |
-| ------ | ------ | ------ | ------ | ------ | ------ |
-|        |        |        |        |        |        |
 | 김한솔 | 김주영 | 김재묵 | 김필주 | 박준희 | 이혜림 |
+|--------|--------|--------|--------|--------|--------|
+| <img src="https://cdn.discordapp.com/attachments/1474265908904988853/1476478135343124500/pngwing.com_2.png?ex=69a144eb&is=699ff36b&hm=ab5c8024ddbc29a04c97429af1d06f122653efacfa09cec6243624c04accb8e0&" width="100"><br>김한솔 | <img src="https://cdn.discordapp.com/attachments/1474265908904988853/1476478977169424415/40db43e91a2575d5.webp?ex=69a145b3&is=699ff433&hm=a1cc3b0a14eb4ba3270566ad940d11e40157983594d0e9303c9db5e0e1e13c9e&" width="100"><br>김주영 | <img src="https://cdn.discordapp.com/attachments/1474265908904988853/1476485345075003425/image.png?ex=69a14ba2&is=699ffa22&hm=67f453a092b81ae9d294af02fbbbe4ce5c605e2d753a7eb743fb25cc69f54bf3&" width="100"><br>김재묵 | <img src="https://cdn.discordapp.com/attachments/1474265908904988853/1476476856969597020/3F3F3F3F3F.webp?ex=69a143ba&is=699ff23a&hm=a8e54201e5952ed69b1c5b1c7c995cdf5fb55688d87e9f953a7f69ac8baa03b2&" width="100"><br>김필주 | <img src="https://cdn.discordapp.com/attachments/1474265908904988853/1476479563835113637/yKcpP1Jh9DRmPiE84YgU1P8_SKdukh8G28EI_nwTzV2RqM7WqBjy44gqbruesxkxdGVQf5aW3YvX9NtMY6HLn523aVnOVQAA_ERtYM4t2ki2e0VzDIfJKwNJxLvukqdxfAdJE1Z8kPWPVkkKpotHjg.png?ex=69a1463f&is=699ff4bf&hm=460fb0e94f6a2a857969c6bcbaff2802142407914bc09ca0a7854e080b460d65&" width="100"><br>박준희 | <img src="https://cdn.discordapp.com/attachments/1474265908904988853/1476476775486722098/image.png?ex=69a143a6&is=699ff226&hm=d5dcfa717668f4fe622502697d2d999c749965cb34f7b343159b226c43668b9b&" width="100"><br>이혜림 |
 
 ## 2. 프로젝트 개요
 
