@@ -70,7 +70,7 @@ df_sub1, df_sub2, ev_reg_count = build_subsidy_df()
 #  인프라 격차 분석
 # ══════════════════════════════════════════════════════════════════════════════
 container = st.container(border=True, height=140)
-container.header("📊 인프라 격차 분석")
+container.header("인프라 격차 분석")
 container.text("지역별 충전 인프라 및 친환경차 현황 비교")
 
 if all(d is not None for d in [df_ev_cnt, df_h2_cnt, df_charger]):
@@ -80,13 +80,13 @@ if all(d is not None for d in [df_ev_cnt, df_h2_cnt, df_charger]):
     ev_man        = int(total_ev / 10000)
     h2_man        = int(total_h2 / 10000)
     charger_man   = int(total_charger / 10000)
-    ev_charger    = round(total_charger / total_ev, 2) if total_ev > 0 else 0
+    ev_charger    = round(total_ev / total_charger, 2) if total_ev > 0 else 0
 
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("전국 전기차 등록",  f"{ev_man}만 대",      border=True)
     col2.metric("수소차 등록 대수",  f"{h2_man}만 대",      border=True)
     col3.metric("총 충전기 수",      f"{charger_man}만 대", border=True)
-    col4.metric("전기차량 충전기",   f"{ev_charger}기/대",  border=True)
+    col4.metric("차충비",   f"{ev_charger}기/대",  border=True)
 
 if df_infra is not None:
     fig1 = go.Figure()
@@ -125,7 +125,7 @@ if df_sub1 is not None:
     col1, col2, col3 = st.columns(3)
     col1.metric("💵 평균 전기차 보조금", f"{sum_ev_avg} 만원", border=True)
     col2.metric("💵 평균 수소차 보조금", f"{sum_h2_avg} 만원", border=True)
-    col3.metric("🌉 최고 보조금 지역", df_sub2.loc[df_sub2["전체 보조금"].idxmax(), "지역"], border=True)
+    
 
     fig2 = go.Figure()
     fig2.add_trace(go.Bar(x=df_sub1["지역"], y=df_sub1["전기차 보조금"], name="전기차 보조금", yaxis="y1", opacity=0.7))
