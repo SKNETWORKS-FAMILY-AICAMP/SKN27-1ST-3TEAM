@@ -73,4 +73,4 @@ class FAQ:
 if __name__ == "__main__":
     faq = FAQ()
     faq.main()
-    st.text(faq.df_.head())
+
